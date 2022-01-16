@@ -7,7 +7,7 @@ from src.models.table import Table
 from src.models.card import Card
 
 app = Flask(__name__)
-CORS(app, support_credentials=True, resources={r"/*": {"origins": "*"}})
+CORS(app, support_credentials=False, resources={r"/*": {"origins": "*"}})
 pusher_client = Pusher(
     ssl=True,
     app_id="1326635",

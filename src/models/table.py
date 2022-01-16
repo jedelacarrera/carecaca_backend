@@ -41,6 +41,8 @@ class Table:
 
     @staticmethod
     def load_from_folder(table_name: str) -> "Table":
+        if not os.path.isdir("tmp"):
+            os.mkdir("tmp")
         path = f"tmp/{table_name}/"
         if not os.path.isdir(path):
             os.mkdir(path)

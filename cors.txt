@@ -1,0 +1,8 @@
+[
+    {
+      "origin": ["*"],
+      "responseHeader": ["Access-Control-Allow-Origin", "content-type", "x-goog-meta-file-name"],
+      "method": ["GET", "POST", "PUT", "OPTIONS"],
+      "maxAgeSeconds": 3600
+    }
+]
