@@ -1,0 +1,77 @@
+steps:
+  - id: venv
+    name: gcr.io/$PROJECT_ID/python-cloudbuild
+    waitFor:
+      - "-"
+    entrypoint: /bin/bash
+    args:
+      - -c
+      - "virtualenv /workspace/venv"
+  - id: python_packages
+    name: gcr.io/$PROJECT_ID/python-cloudbuild
+    waitFor:
+      - venv
+    entrypoint: venv/bin/pip
+    args:
+      - install
+      - -q
+      - -r
+      - requirements.txt
+  - id: pylint
+    name: gcr.io/$PROJECT_ID/python-cloudbuild
+    waitFor:
+      - python_packages
+    entrypoint: venv/bin/pylint
+    args:
+      - "src"
+      - "tests"
+  - id: black
+    name: gcr.io/$PROJECT_ID/python-cloudbuild
+    waitFor:
+      - python_packages
+    entrypoint: venv/bin/black
+    args:
+      - --check
+      - src
+      - tests
+      - --exclude
+      - /snapshots/
+  - id: pytest
+    name: gcr.io/$PROJECT_ID/python-cloudbuild
+    waitFor:
+      - python_packages
+    entrypoint: venv/bin/pytest
+    args:
+      - -v
+      - --reverse
+  - id: padel-api-build
+    name: gcr.io/cloud-builders/gcloud
+    waitFor:
+      - "-"
+    args:
+      - builds
+      - submit
+      - .
+      - --tag
+      - gcr.io/$PROJECT_ID/padel-api
+  - id: padel-api-deploy
+    name: gcr.io/cloud-builders/gcloud
+    waitFor:
+      - pytest
+      - pylint
+      - black
+      - padel-api-build
+    entrypoint: /bin/bash
+    args:
+      - "-c"
+      - |
+        gcloud run deploy \
+        padel-api \
+        --image=gcr.io/$PROJECT_ID/padel-api \
+        --allow-unauthenticated \
+        --memory=256Mi \
+        --platform=managed \
+        --region=us-central1 \
+      # s/:  *'/=/g      --> change ": '" for "="
+      # s/' *$//         --> remove last single quote of the line
+      # paste -sd ',' -  --> join lines using commas

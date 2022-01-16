@@ -1,0 +1,17 @@
+{
+    "d": {
+        "__type": "Matchpoint.Web.Booking.srvc+InformacionHuecoLibre",
+        "Titulo": "Pádel 3 12:00 13:30",
+        "Descripcion": null,
+        "IdImagen": 0,
+        "Opciones": [
+            {
+                "Token": "f71c1ed1cedb14327ab1a16c00bb1fd5930a89302d86b5a61bc1289ed71b25d36f5368fca7319b2c23d960d02d6e2515",
+                "Descripcion": "Reservar"
+            }
+        ],
+        "Lugar": "Pádel 3",
+        "FechaHora": "1/12/2020 12:00",
+        "Url_Imagen": "http://www.clubconecta.cl/images.ashx?cmd=get&id=8"
+    }
+}

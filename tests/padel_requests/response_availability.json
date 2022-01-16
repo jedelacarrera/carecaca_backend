@@ -1,0 +1,25 @@
+{
+    "d": {
+        "__type": "Matchpoint.Web.Booking.srvc+InformacionHuecoLibre",
+        "Titulo": "Cancha 1 28/11/2020 13:30",
+        "Descripcion": "",
+        "IdImagen": 0,
+        "Opciones": [
+            {
+                "Token": "e7e81ed9881919a99516881ccb8f99ace4b6398d9ba174475a294c07f7ce2422bab15dcfac0a87a3181dae383d104e99",
+                "Descripcion": "60\u0027 Defecto"
+            },
+            {
+                "Token": "e7e81ed9881919a99516881ccb8f99ace4b6398d9ba174475a294c07f7ce24223d8cddd22b2619de3becf7208f7f69f3",
+                "Descripcion": "90\u0027 Defecto"
+            },
+            {
+                "Token": "e7e81ed9881919a99516881ccb8f99ace4b6398d9ba174475a294c07f7ce242226f30ab2f62bc44b15afeec2746e1b39",
+                "Descripcion": "120\u0027 Defecto"
+            }
+        ],
+        "Lugar": "Cancha 1",
+        "FechaHora": "28/11/2020 13:30",
+        "Url_Imagen": "http://padeloriente.cl/images.ashx?cmd=get&id=6"
+    }
+}
