@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from pusher import Pusher
@@ -11,8 +12,8 @@ CORS(app, support_credentials=False, resources={r"/*": {"origins": "*"}})
 pusher_client = Pusher(
     ssl=True,
     app_id="1326635",
-    key="a9bbaeaa4779d99286ba",
-    secret="be38091b295e530c24fe",
+    key="9ba9d78bd91108bb3657",
+    secret=os.getenv("PUSHER_SECRET"),
     cluster="sa1",
 )
 
